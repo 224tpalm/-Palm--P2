@@ -79,7 +79,11 @@ window.addEventListener('load', function() {
 
 }, false);
 
-function GalleryImage(location, description, date, img) {
+function GalleryImage() {
+	var location;
+	var description;
+	var date;
+	var image;
 	//implement me as an object to hold the following data about an image:
 	//1. location where photo was taken
 	//2. description of photo
