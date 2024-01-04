@@ -61,6 +61,7 @@ function fetchJSON()
 	mRequest.onreadystatechange = function() {
 		console.log("on ready state change");
 		if(this.readyState == 4 && this.status === 200){
+			// 04 - Create Objects
 			mJSON = JSON.parse(mRequest.responseText);
 			iterateJSON(mJSON);
 		}
