@@ -33,6 +33,25 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
+	if(mCurrentIndex >= mImages.length)
+	{
+		mCurrentIndex = 0;
+	}
+	if(mCurrentIndex < 0) {
+		mCurrentIndex = mImages.length-1;
+	}
+
+	document.getElementById('photo').src = mImages[mCurrentIndex].img;
+	var loc = document.getElementsByClassName('location');
+	loc[0].innerHTML = "Location: " + mImages[mCurrentIndex].location;
+	var des = document.getElementsByClassName('description');
+	des[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
+	var dt = document.getElementsByClassName('date');
+	dt[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
+
+	mLastFrameTime = 0;
+	mCurrentIndex += 1;
+
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
@@ -70,6 +89,18 @@ function fetchJSON()
 	mRequest.send();
 }
 
+function iterateJSON(mJSON)
+{
+	FileReader( x = 0; x < mJSON.images.length; x++ )
+	{
+		mImages[x] = new GalleryImages();
+		mImages[x].location = mJSON.images[x].imgLocation;
+		mImages[x].description = mJSON.images[x].description;
+		mImages[x].date = mJSON.images[x].date;
+		mImages[x].img = mJSON.images[x].imgPath;
+	}
+}
+
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
 //@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
 function makeGalleryImageOnloadCallback(galleryImage) {
@@ -82,7 +113,7 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
-	$('.details').eq(0).hide();
+	// $('.details').eq(0).hide();
 	
 });
 
