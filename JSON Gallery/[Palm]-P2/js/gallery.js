@@ -75,6 +75,20 @@ var mJson;
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 var mUrl = 'images.json';
 
+function toggleDetails()
+{
+	if($(".moreIndicator").hasClass("rot90"))
+	{
+		$(".moreIndicator").removeClass("rot90");
+		$(".moreIndicator").addClass("rot270");
+	}
+	else {
+		$(".moreIndicator").removeClass("rot270");
+		$(".moreIndicator").addClass("rot90");
+	}
+	$(".details").slideToggle("slow", "linear");
+}
+
 function fetchJSON() 
 {
 	mRequest.onreadystatechange = function() {
