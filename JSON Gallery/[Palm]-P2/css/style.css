@@ -59,6 +59,7 @@ body {
 #nextPhoto {
 	height: 42px;
 	width: 42px;
+	padding-left: 550px;
 }
 
 #nextPhoto:hover, #prevPhoto:hover {
